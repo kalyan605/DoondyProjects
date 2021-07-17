@@ -7,33 +7,21 @@ import "@pnp/sp/items";
 import "@pnp/sp/site-users/web";
 import "@pnp/sp/fields";
 import "@pnp/sp/attachments";
-import "@pnp/sp/files";
 
 export default class Service{
     
-   public mysitecontext:any;
-
-    public constructor(siteUrl:string,Sitecontext:any){ 
-        this.mysitecontext=Sitecontext;
-       
-
+    public constructor(siteUrl:string){ 
         sp.setup({
             sp: {
               baseUrl: siteUrl
-              
             },
           });
-
-
         
     }
-  
-
-
     
     public async addItemToSPList(data:any,fileDetails:any):Promise<any>{
         try{
-             let listName:string = "OperationsDOC";
+             let listName:string = "allColumns";
              const iar = await sp.web.lists.getByTitle(listName).items.add(data).then(async (item)=>{
                 console.log(item);
                 console.log(fileDetails);
@@ -42,7 +30,8 @@ export default class Service{
                 return item;
              });
               
-              
+              //const item:any = await sp.web.lists.getByTitle(listName).items.getById(iar.data.id).get();
+              //await item.attachmentFiles.add(file);
               return iar;
             
         } catch (error) {
@@ -58,39 +47,5 @@ export default class Service{
             console.log(error);
         }
     }
-
-
-    public async uploadFile(fileDetails:any,data:any){
-
-     try
-     {
-
-    console.log(this.mysitecontext);
-//     sp.web.getFolderByServerRelativeUrl(this.mysitecontext.pageContext.web.serverRelativeUrl + "/OperationsDOC")
-//    .files.add(fileDetails.name, fileDetails, true)
-//    .then((data) =>{
-     
-//      console.log(data);
-//      alert("File uploaded sucessfully");
-//    })
-//    .catch((error) =>{
-//      alert("Error is uploading");
-//    });
-
-const file = await sp.web.getFolderByServerRelativeUrl(this.mysitecontext.pageContext.web.serverRelativeUrl + "/OperationsDOC").files.add(fileDetails.name, fileDetails, true);
-const item = await file.file.getItem();
-await item.update(data);
-alert("File uploaded sucessfully");
-window.location.replace("https://capcoinc.sharepoint.com/sites/TestSPFX");
-      
-
-
-    }
-
-    catch(error){
-        console.log(error);
-    }
-
-}
 
 }
