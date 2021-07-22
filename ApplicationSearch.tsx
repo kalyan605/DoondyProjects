@@ -437,7 +437,7 @@ export default class ApplicationSearch extends React.Component<IApplicationSearc
 
 
 
-        {this.state.flag == true && this.state.userExsits == true  &&
+        {this.state.flag == true && this.state.userExsits == false  &&
 
           //Normal Details Screen
 
@@ -531,7 +531,7 @@ export default class ApplicationSearch extends React.Component<IApplicationSearc
         }
 
 
-        {this.state.flag == true && this.state.userExsits == false &&
+        {this.state.flag == true && this.state.userExsits == true &&
 
           //Admin Desingn Screen
           <Stack>
@@ -611,7 +611,7 @@ export default class ApplicationSearch extends React.Component<IApplicationSearc
                   </Stack>
                 
                 <Stack horizontal tokens={sectionStackTokens}>
-                <StackItem className={styles.commonstyleDescRightbox}>
+                <StackItem className={styles.AlignChange}>
                 {this.state.ItemInfo.Provider == null ? 'N/A' : this.state.ItemInfo.Provider}
                 </StackItem>
                 <StackItem className={styles.commonstyleDescRightbox}>
@@ -627,7 +627,7 @@ export default class ApplicationSearch extends React.Component<IApplicationSearc
                     </StackItem>
                   </Stack>
                 <Stack horizontal tokens={sectionStackTokens}>
-                <StackItem className={styles.commonstyleDescRightbox}>
+                <StackItem className={styles.AlignChange}>
                 {this.state.ItemInfo.ContactName == null ? 'N/A' : this.state.ItemInfo.ContactName}
                 </StackItem>
                 <StackItem className={styles.commonstyleDescRightbox}>
@@ -644,7 +644,7 @@ export default class ApplicationSearch extends React.Component<IApplicationSearc
                   </Stack>
                 
                 <Stack horizontal tokens={sectionStackTokens}>
-                <StackItem className={styles.commonstyleDescRightbox}>
+                <StackItem className={styles.AlignChange}>
                 {this.state.ItemInfo.TelorMobile == null ? 'N/A' : this.state.ItemInfo.TelorMobile}
                 </StackItem>
                 <StackItem className={styles.commonstyleDescRightbox}>
